@@ -26,5 +26,5 @@ This application uses a deep learning model to classify brain MRI images into fo
    ```bash
    python app.py
    ```
-🚀 Live Demo: https://huggingface.co/spaces/synapticpush/Brain_Tumor
+
 
