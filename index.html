@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeuroScan Inference Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="bg-orb orb-a" aria-hidden="true"></div>
+  <div class="bg-orb orb-b" aria-hidden="true"></div>
+
+  <main class="page-shell">
+    <header class="hero reveal">
+      <p class="eyebrow">MRI Tumor Classifier</p>
+      <h1>NeuroScan Inference Studio</h1>
+      <p class="subtext">
+        Upload a brain MRI image and run instant model inference across four classes:
+        Glioma, Meningioma, No Tumor, and Pituitary.
+      </p>
+    </header>
+
+    <section class="panel-grid reveal reveal-delay-1">
+      <article class="card uploader-card">
+        <h2>Input Image</h2>
+        <label id="dropzone" class="dropzone" for="fileInput">
+          <input id="fileInput" type="file" accept="image/*" hidden />
+          <div class="dropzone-content">
+            <p class="drop-title">Drop MRI scan here</p>
+            <p class="drop-caption">or click to browse</p>
+            <p class="drop-hint">Supported: JPG, PNG, WEBP</p>
+          </div>
+        </label>
+
+        <div id="previewWrap" class="preview-wrap hidden">
+          <img id="previewImage" alt="Selected MRI preview" />
+          <button id="clearBtn" class="secondary-btn" type="button">Clear</button>
+        </div>
+
+        <button id="predictBtn" class="predict-btn" type="button" disabled>
+          Run Inference
+        </button>
+        <p id="status" class="status" aria-live="polite"></p>
+      </article>
+
+      <article class="card results-card">
+        <h2>Prediction Output</h2>
+        <div id="emptyState" class="empty-state">
+          <p>Your inference results will appear here.</p>
+        </div>
+
+        <div id="resultBox" class="result-box hidden">
+          <div class="result-top">
+            <p class="result-label">Top Class</p>
+            <p id="predictedClass" class="predicted-class">-</p>
+            <p id="confidence" class="confidence">Confidence: -</p>
+          </div>
+
+          <div>
+            <p class="bars-title">Class Probabilities</p>
+            <div id="probabilityBars" class="bars"></div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
